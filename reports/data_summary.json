@@ -1,0 +1,560 @@
+{
+  "generated_at": "2026-03-16T16:45:00",
+  "train_rows": 8603,
+  "validation_rows": 3217,
+  "submission_rows": 3046,
+  "train_actual_rows": 7745,
+  "train_design_rows": 854,
+  "validation_actual_rows": 3046,
+  "validation_design_rows": 171,
+  "train_wells": 64,
+  "validation_wells": 22,
+  "train_validation_well_overlap": 0,
+  "label_distribution": {
+    "0": 7593,
+    "1": 64,
+    "2": 63,
+    "3": 25
+  },
+  "train_missing": {
+    "id": 0,
+    "转换后JH": 0,
+    "XJS": 0,
+    "JX": 858,
+    "FW": 858,
+    "LJCZJS": 908,
+    "JX_design": 7756,
+    "FW_design": 7749,
+    "LJCZJS_design": 7791,
+    "关键点": 858
+  },
+  "validation_missing": {
+    "id": 0,
+    "转换后JH": 0,
+    "XJS": 0,
+    "JX": 171,
+    "FW": 171,
+    "LJCZJS": 182,
+    "JX_design": 3047,
+    "FW_design": 3046,
+    "LJCZJS_design": 3056
+  },
+  "train_well_counts": [
+    {
+      "转换后JH": "B16-X1",
+      "actual_rows": 131,
+      "design_rows": 52
+    },
+    {
+      "转换后JH": "B16-X13",
+      "actual_rows": 135,
+      "design_rows": 36
+    },
+    {
+      "转换后JH": "B16-X14",
+      "actual_rows": 124,
+      "design_rows": 24
+    },
+    {
+      "转换后JH": "B16-X15",
+      "actual_rows": 142,
+      "design_rows": 21
+    },
+    {
+      "转换后JH": "B16-X20",
+      "actual_rows": 138,
+      "design_rows": 18
+    },
+    {
+      "转换后JH": "B16-X21",
+      "actual_rows": 138,
+      "design_rows": 19
+    },
+    {
+      "转换后JH": "B16-X22",
+      "actual_rows": 142,
+      "design_rows": 29
+    },
+    {
+      "转换后JH": "B16-X25",
+      "actual_rows": 128,
+      "design_rows": 18
+    },
+    {
+      "转换后JH": "B16-X27",
+      "actual_rows": 139,
+      "design_rows": 20
+    },
+    {
+      "转换后JH": "B16-X30",
+      "actual_rows": 131,
+      "design_rows": 23
+    },
+    {
+      "转换后JH": "B16-X31",
+      "actual_rows": 136,
+      "design_rows": 18
+    },
+    {
+      "转换后JH": "B16-X35",
+      "actual_rows": 145,
+      "design_rows": 20
+    },
+    {
+      "转换后JH": "B16-X36",
+      "actual_rows": 134,
+      "design_rows": 18
+    },
+    {
+      "转换后JH": "B16-X40",
+      "actual_rows": 144,
+      "design_rows": 18
+    },
+    {
+      "转换后JH": "B16-X49",
+      "actual_rows": 150,
+      "design_rows": 24
+    },
+    {
+      "转换后JH": "B16-X5",
+      "actual_rows": 135,
+      "design_rows": 14
+    },
+    {
+      "转换后JH": "B16-X7",
+      "actual_rows": 139,
+      "design_rows": 20
+    },
+    {
+      "转换后JH": "B16-X9",
+      "actual_rows": 145,
+      "design_rows": 15
+    },
+    {
+      "转换后JH": "B193-X23",
+      "actual_rows": 116,
+      "design_rows": 0
+    },
+    {
+      "转换后JH": "B193-X28",
+      "actual_rows": 92,
+      "design_rows": 0
+    },
+    {
+      "转换后JH": "B3-X91",
+      "actual_rows": 105,
+      "design_rows": 0
+    },
+    {
+      "转换后JH": "B509-P13",
+      "actual_rows": 142,
+      "design_rows": 0
+    },
+    {
+      "转换后JH": "B64-X23",
+      "actual_rows": 63,
+      "design_rows": 0
+    },
+    {
+      "转换后JH": "B64-X24",
+      "actual_rows": 83,
+      "design_rows": 5
+    },
+    {
+      "转换后JH": "B64-X25",
+      "actual_rows": 80,
+      "design_rows": 5
+    },
+    {
+      "转换后JH": "B64-X26",
+      "actual_rows": 84,
+      "design_rows": 5
+    },
+    {
+      "转换后JH": "B64-X39",
+      "actual_rows": 90,
+      "design_rows": 12
+    },
+    {
+      "转换后JH": "B64-X40",
+      "actual_rows": 96,
+      "design_rows": 4
+    },
+    {
+      "转换后JH": "B64-X42",
+      "actual_rows": 90,
+      "design_rows": 4
+    },
+    {
+      "转换后JH": "B64-X43",
+      "actual_rows": 97,
+      "design_rows": 4
+    },
+    {
+      "转换后JH": "B64-X45",
+      "actual_rows": 106,
+      "design_rows": 4
+    },
+    {
+      "转换后JH": "B64-X46",
+      "actual_rows": 78,
+      "design_rows": 4
+    },
+    {
+      "转换后JH": "B64-X50",
+      "actual_rows": 67,
+      "design_rows": 4
+    },
+    {
+      "转换后JH": "B64-X51",
+      "actual_rows": 111,
+      "design_rows": 17
+    },
+    {
+      "转换后JH": "B64-X53",
+      "actual_rows": 122,
+      "design_rows": 16
+    },
+    {
+      "转换后JH": "B64-X54",
+      "actual_rows": 113,
+      "design_rows": 15
+    },
+    {
+      "转换后JH": "B64-X55",
+      "actual_rows": 87,
+      "design_rows": 17
+    },
+    {
+      "转换后JH": "B64-X56",
+      "actual_rows": 122,
+      "design_rows": 23
+    },
+    {
+      "转换后JH": "B64-X58",
+      "actual_rows": 91,
+      "design_rows": 15
+    },
+    {
+      "转换后JH": "B64-X60",
+      "actual_rows": 128,
+      "design_rows": 21
+    },
+    {
+      "转换后JH": "B64-X65",
+      "actual_rows": 87,
+      "design_rows": 19
+    },
+    {
+      "转换后JH": "B64-X67",
+      "actual_rows": 136,
+      "design_rows": 18
+    },
+    {
+      "转换后JH": "B64-X69",
+      "actual_rows": 121,
+      "design_rows": 24
+    },
+    {
+      "转换后JH": "B64-X76",
+      "actual_rows": 110,
+      "design_rows": 21
+    },
+    {
+      "转换后JH": "B64-X79",
+      "actual_rows": 119,
+      "design_rows": 23
+    },
+    {
+      "转换后JH": "B64-X81",
+      "actual_rows": 116,
+      "design_rows": 19
+    },
+    {
+      "转换后JH": "B64-X87",
+      "actual_rows": 117,
+      "design_rows": 14
+    },
+    {
+      "转换后JH": "B64-X88",
+      "actual_rows": 126,
+      "design_rows": 20
+    },
+    {
+      "转换后JH": "B64-X90",
+      "actual_rows": 118,
+      "design_rows": 20
+    },
+    {
+      "转换后JH": "B64-XG10",
+      "actual_rows": 82,
+      "design_rows": 4
+    },
+    {
+      "转换后JH": "B64-XG8",
+      "actual_rows": 76,
+      "design_rows": 15
+    },
+    {
+      "转换后JH": "BGX7",
+      "actual_rows": 200,
+      "design_rows": 0
+    },
+    {
+      "转换后JH": "BX357C",
+      "actual_rows": 91,
+      "design_rows": 0
+    },
+    {
+      "转换后JH": "BX370",
+      "actual_rows": 75,
+      "design_rows": 0
+    },
+    {
+      "转换后JH": "BX434",
+      "actual_rows": 145,
+      "design_rows": 0
+    },
+    {
+      "转换后JH": "BX454",
+      "actual_rows": 159,
+      "design_rows": 0
+    },
+    {
+      "转换后JH": "BX467",
+      "actual_rows": 142,
+      "design_rows": 0
+    },
+    {
+      "转换后JH": "BX698",
+      "actual_rows": 170,
+      "design_rows": 0
+    },
+    {
+      "转换后JH": "Z80-X10",
+      "actual_rows": 155,
+      "design_rows": 12
+    },
+    {
+      "转换后JH": "Z80-X2",
+      "actual_rows": 152,
+      "design_rows": 7
+    },
+    {
+      "转换后JH": "Z80-X5",
+      "actual_rows": 153,
+      "design_rows": 7
+    },
+    {
+      "转换后JH": "Z80-X6",
+      "actual_rows": 149,
+      "design_rows": 33
+    },
+    {
+      "转换后JH": "Z80-X7",
+      "actual_rows": 149,
+      "design_rows": 8
+    },
+    {
+      "转换后JH": "Z80-X8",
+      "actual_rows": 158,
+      "design_rows": 8
+    }
+  ],
+  "validation_well_counts": [
+    {
+      "转换后JH": "B16-X19",
+      "actual_rows": 153,
+      "design_rows": 23
+    },
+    {
+      "转换后JH": "B16-X32",
+      "actual_rows": 142,
+      "design_rows": 19
+    },
+    {
+      "转换后JH": "B193-X29",
+      "actual_rows": 132,
+      "design_rows": 0
+    },
+    {
+      "转换后JH": "B446",
+      "actual_rows": 66,
+      "design_rows": 0
+    },
+    {
+      "转换后JH": "B64-X48",
+      "actual_rows": 77,
+      "design_rows": 4
+    },
+    {
+      "转换后JH": "B64-X63",
+      "actual_rows": 88,
+      "design_rows": 14
+    },
+    {
+      "转换后JH": "B64-X66",
+      "actual_rows": 87,
+      "design_rows": 9
+    },
+    {
+      "转换后JH": "B64-X70",
+      "actual_rows": 132,
+      "design_rows": 22
+    },
+    {
+      "转换后JH": "B64-X71",
+      "actual_rows": 127,
+      "design_rows": 17
+    },
+    {
+      "转换后JH": "B64-X72",
+      "actual_rows": 128,
+      "design_rows": 20
+    },
+    {
+      "转换后JH": "B64-X73",
+      "actual_rows": 123,
+      "design_rows": 16
+    },
+    {
+      "转换后JH": "B689CHF",
+      "actual_rows": 183,
+      "design_rows": 0
+    },
+    {
+      "转换后JH": "BGX28",
+      "actual_rows": 172,
+      "design_rows": 0
+    },
+    {
+      "转换后JH": "BGX6",
+      "actual_rows": 200,
+      "design_rows": 0
+    },
+    {
+      "转换后JH": "BX357",
+      "actual_rows": 81,
+      "design_rows": 0
+    },
+    {
+      "转换后JH": "BX457",
+      "actual_rows": 129,
+      "design_rows": 0
+    },
+    {
+      "转换后JH": "BX458",
+      "actual_rows": 160,
+      "design_rows": 0
+    },
+    {
+      "转换后JH": "BX683",
+      "actual_rows": 259,
+      "design_rows": 0
+    },
+    {
+      "转换后JH": "BX697",
+      "actual_rows": 161,
+      "design_rows": 0
+    },
+    {
+      "转换后JH": "Z80-X1",
+      "actual_rows": 159,
+      "design_rows": 9
+    },
+    {
+      "转换后JH": "Z80-X3",
+      "actual_rows": 144,
+      "design_rows": 11
+    },
+    {
+      "转换后JH": "Z80-X4",
+      "actual_rows": 143,
+      "design_rows": 7
+    }
+  ],
+  "actual_numeric_summary": {
+    "XJS": {
+      "count": 7745.0,
+      "mean": 1501.2965,
+      "std": 1000.0485,
+      "min": 0.0,
+      "25%": 639.85,
+      "50%": 1387.03,
+      "75%": 2210.52,
+      "max": 5385.0
+    },
+    "JX": {
+      "count": 7745.0,
+      "mean": 22.9395,
+      "std": 16.8835,
+      "min": 0.0,
+      "25%": 2.8,
+      "50%": 26.32,
+      "75%": 35.82,
+      "max": 95.1
+    },
+    "FW": {
+      "count": 7745.0,
+      "mean": 186.731,
+      "std": 99.3277,
+      "min": 0.0,
+      "25%": 98.34,
+      "50%": 194.31,
+      "75%": 265.82,
+      "max": 359.9
+    },
+    "LJCZJS": {
+      "count": 7695.0,
+      "mean": 1372.5036,
+      "std": 883.9115,
+      "min": 0.0,
+      "25%": 632.16,
+      "50%": 1278.35,
+      "75%": 1971.41,
+      "max": 5261.39
+    }
+  },
+  "design_numeric_summary": {
+    "XJS": {
+      "count": 854.0,
+      "mean": 1668.3961,
+      "std": 1022.5181,
+      "min": 0.0,
+      "25%": 700.31,
+      "50%": 1725.205,
+      "75%": 2497.84,
+      "max": 4055.22
+    },
+    "JX_design": {
+      "count": 847.0,
+      "mean": 25.84,
+      "std": 14.0545,
+      "min": 0.0,
+      "25%": 18.0,
+      "50%": 28.67,
+      "75%": 36.3,
+      "max": 48.68
+    },
+    "FW_design": {
+      "count": 854.0,
+      "mean": 177.9654,
+      "std": 94.5764,
+      "min": 0.0,
+      "25%": 97.48,
+      "50%": 190.19,
+      "75%": 242.42,
+      "max": 355.71
+    },
+    "LJCZJS_design": {
+      "count": 812.0,
+      "mean": 1560.8408,
+      "std": 829.156,
+      "min": 0.0,
+      "25%": 793.2475,
+      "50%": 1648.705,
+      "75%": 2205.5325,
+      "max": 3630.93
+    }
+  }
+}
