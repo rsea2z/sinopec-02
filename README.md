@@ -147,6 +147,32 @@ python scripts/train_baseline.py
 - `python scripts/search_ensemble.py`
 - `python scripts/train_ensemble.py`
 
+## 序列模型试验
+
+已补充纯 PyTorch `BiLSTM` 序列标注 baseline：
+
+- 脚本：`python scripts/train_sequence_baseline.py`
+- 结果：raw macro-F1 `0.4292`
+- 结果：structured macro-F1 `0.5669`
+
+结论：
+
+- 该轻量序列模型目前明显弱于表格特征 + 结构化解码方案
+- 当前更值得继续投入的方向不是直接堆深度模型，而是做两阶段候选点检测或更强结构化建模
+
+## 候选点分析
+
+基于当前最佳 ensemble 的 OOF 概率，已做两阶段路线的可行性检查：
+
+- `1` 类 top-2 候选覆盖率：`95.3%`
+- `2` 类 top-5 候选覆盖率：`92.1%`
+- `3` 类 top-10 候选覆盖率：`92.0%`
+
+这说明下一步最合理的研究路线是：
+
+- 先生成小规模候选点集合
+- 再对候选点做排序或精分类
+
 ## 重要结论
 
 - 这个问题本质上是序列关键点识别，不是普通 IID 表格分类
@@ -161,4 +187,6 @@ python scripts/train_baseline.py
 - `docs/analysis/model_plan.md`
 - `docs/analysis/baseline_results.md`
 - `docs/analysis/model_comparison.md`
+- `docs/analysis/sequence_results.md`
+- `docs/analysis/candidate_analysis.md`
 - `memory/session_memory.md`

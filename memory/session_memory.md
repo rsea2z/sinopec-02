@@ -7,23 +7,28 @@ _更新日期：2026-03-16_
 ## 当前任务
 
 - 完成 `SINOPEC-02` 数据集的任务分析
-- 建立可复现的 EDA 与 baseline 流程
-- 将项目内容推送到 `https://github.com/rsea2z/sinopec-02.git`
+- 建立可复现的 EDA、baseline、多模型比较与 ensemble 流程
+- 在此基础上继续推进更强的序列模型 baseline
 
 ## 已确认事实
 
-- 工作目录当前只有 `SINOPEC-02` 数据目录，初始时不是 git 仓库
+- 工作目录初始只有 `SINOPEC-02` 数据目录，已补齐为完整项目仓库
 - `train.csv` 混合了实际轨迹点与设计轨迹点
 - 设计轨迹点不在 `sample_submission.csv` 预测范围内
 - 训练井与验证井不重合
 - 标签顺序在井内稳定为 `1 -> 2 -> 3`
-- `3` 类样本明显更少，部分井不存在 `3`
+- `3` 类样本更少，部分井不存在 `3`
+- `torch 2.7.0+cu128` 可用
+- `pytorch_lightning` 当前环境存在依赖冲突，不适合作为本项目主训练框架
 
 ## 已落地内容
 
 - 项目结构：`src/`、`scripts/`、`docs/analysis/`、`reports/`、`memory/`
 - EDA 脚本：`scripts/eda_report.py`
 - baseline 脚本：`scripts/train_baseline.py`
+- 模型比较脚本：`scripts/compare_models.py`
+- ensemble 搜索脚本：`scripts/search_ensemble.py`
+- ensemble 预测脚本：`scripts/train_ensemble.py`
 - 核心代码：
   - `src/sinopec02/data.py`
   - `src/sinopec02/features.py`
@@ -33,16 +38,20 @@ _更新日期：2026-03-16_
   - `docs/analysis/task_analysis.md`
   - `docs/analysis/model_plan.md`
   - `docs/analysis/baseline_results.md`
+  - `docs/analysis/model_comparison.md`
 
 ## 当前结果
 
-- 5 折按井交叉验证
-- raw macro-F1: `0.5932`
-- structured macro-F1: `0.6322`
-- raw weighted-F1: `0.9803`
-- structured weighted-F1: `0.9823`
-- 结构化解码对 `1`、`2` 类提升明显
-- `3` 类仍是主要瓶颈
+- 单模型最佳：`random_forest`
+- 5 折按井交叉验证：
+  - raw macro-F1: `0.5932`
+  - structured macro-F1: `0.6322`
+  - raw weighted-F1: `0.9803`
+  - structured weighted-F1: `0.9823`
+- 轻量 `BiLSTM` 序列模型：
+  - raw macro-F1: `0.4292`
+  - structured macro-F1: `0.5669`
+  - 当前弱于表格模型与 ensemble
 
 ## 扩展实验结果
 
@@ -63,11 +72,26 @@ _更新日期：2026-03-16_
 - 设计轨迹通过 `XJS` 插值对齐到实际轨迹
 - `FW` 使用圆周差与 `sin/cos` 编码
 - 验证策略使用 `GroupKFold`
-- baseline 采用点级随机森林加每井结构化解码
+- baseline 采用点级分类加每井结构化解码
+- 继续推进时优先尝试轻量纯 PyTorch 序列模型，而不是修复 Lightning 环境
+
+## 当前阶段判断
+
+- 数据理解：完成
+- 可复现 baseline：完成
+- 对比实验：完成
+- 初步改进：完成
+- 更强序列模型：进行中
+- 轻量序列模型首轮：已完成，效果不如 ensemble
+- 两阶段候选点路线：已完成可行性验证
+- 论文成稿：未开始
 
 ## 下一步
 
-1. 运行脚本生成报告与指标
-2. 初始化 git，提交并推送到目标仓库
-3. 如需继续，尝试更强 baseline 与两阶段方法
-4. 当前已增加多模型比较与 ensemble 脚本
+1. 进入两阶段候选点检测路线
+2. 尝试把“候选点生成”和“候选点分类”分开
+3. 对 `3` 类做单独增强
+4. 当前候选覆盖率结论：
+   - `1` 类 top-2: `95.3%`
+   - `2` 类 top-5: `92.1%`
+   - `3` 类 top-10: `92.0%`
