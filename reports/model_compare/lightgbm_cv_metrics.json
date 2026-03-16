@@ -1,0 +1,176 @@
+{
+  "fold_results": [
+    {
+      "fold": 1,
+      "macro_f1_raw": 0.468900023304591,
+      "macro_f1_structured": 0.5196344235140028,
+      "weighted_f1_raw": 0.9782304943561061,
+      "weighted_f1_structured": 0.9769785855604647
+    },
+    {
+      "fold": 2,
+      "macro_f1_raw": 0.5408924095954171,
+      "macro_f1_structured": 0.5835382513661201,
+      "weighted_f1_raw": 0.9833216623505597,
+      "weighted_f1_structured": 0.98399261892744
+    },
+    {
+      "fold": 3,
+      "macro_f1_raw": 0.552145473574045,
+      "macro_f1_structured": 0.5607405123350454,
+      "weighted_f1_raw": 0.9857889073996945,
+      "weighted_f1_structured": 0.9841178735494435
+    },
+    {
+      "fold": 4,
+      "macro_f1_raw": 0.5283547706878595,
+      "macro_f1_structured": 0.5308842370804681,
+      "weighted_f1_raw": 0.9801544181167612,
+      "weighted_f1_structured": 0.9768632584878871
+    },
+    {
+      "fold": 5,
+      "macro_f1_raw": 0.5798640313989347,
+      "macro_f1_structured": 0.6442978093451794,
+      "weighted_f1_raw": 0.9807296337822652,
+      "weighted_f1_structured": 0.9798342006703745
+    }
+  ],
+  "overall": {
+    "macro_f1_raw": 0.5333099958634377,
+    "macro_f1_structured": 0.5697568641211875,
+    "weighted_f1_raw": 0.9816365062396891,
+    "weighted_f1_structured": 0.9803201399899745,
+    "classification_report_raw": {
+      "0": {
+        "precision": 0.9893826189539914,
+        "recall": 0.9940734887396286,
+        "f1-score": 0.991722506897911,
+        "support": 7593.0
+      },
+      "1": {
+        "precision": 0.6621621621621622,
+        "recall": 0.765625,
+        "f1-score": 0.7101449275362319,
+        "support": 64.0
+      },
+      "2": {
+        "precision": 0.5641025641025641,
+        "recall": 0.3492063492063492,
+        "f1-score": 0.43137254901960786,
+        "support": 63.0
+      },
+      "3": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 25.0
+      },
+      "accuracy": 0.9837314396384764,
+      "macro avg": {
+        "precision": 0.5539118363046793,
+        "recall": 0.5272262094864945,
+        "f1-score": 0.5333099958634377,
+        "support": 7745.0
+      },
+      "weighted avg": {
+        "precision": 0.9800257024705612,
+        "recall": 0.9837314396384764,
+        "f1-score": 0.9816365062396891,
+        "support": 7745.0
+      }
+    },
+    "classification_report_structured": {
+      "0": {
+        "precision": 0.9914100700409674,
+        "recall": 0.9880152772290267,
+        "f1-score": 0.9897097625329815,
+        "support": 7593.0
+      },
+      "1": {
+        "precision": 0.7619047619047619,
+        "recall": 0.75,
+        "f1-score": 0.7559055118110236,
+        "support": 64.0
+      },
+      "2": {
+        "precision": 0.47058823529411764,
+        "recall": 0.38095238095238093,
+        "f1-score": 0.42105263157894735,
+        "support": 63.0
+      },
+      "3": {
+        "precision": 0.078125,
+        "recall": 0.2,
+        "f1-score": 0.11235955056179775,
+        "support": 25.0
+      },
+      "accuracy": 0.9785668173014849,
+      "macro avg": {
+        "precision": 0.5755070168099617,
+        "recall": 0.579741914545352,
+        "f1-score": 0.5697568641211875,
+        "support": 7745.0
+      },
+      "weighted avg": {
+        "precision": 0.9823290833320206,
+        "recall": 0.9785668173014849,
+        "f1-score": 0.9803201399899745,
+        "support": 7745.0
+      }
+    },
+    "confusion_matrix_raw": [
+      [
+        7548,
+        25,
+        17,
+        3
+      ],
+      [
+        15,
+        49,
+        0,
+        0
+      ],
+      [
+        41,
+        0,
+        22,
+        0
+      ],
+      [
+        25,
+        0,
+        0,
+        0
+      ]
+    ],
+    "confusion_matrix_structured": [
+      [
+        7502,
+        15,
+        27,
+        49
+      ],
+      [
+        16,
+        48,
+        0,
+        0
+      ],
+      [
+        29,
+        0,
+        24,
+        10
+      ],
+      [
+        20,
+        0,
+        0,
+        5
+      ]
+    ]
+  },
+  "model_name": "lightgbm"
+}

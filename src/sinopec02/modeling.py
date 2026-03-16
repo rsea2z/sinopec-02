@@ -3,16 +3,27 @@ from __future__ import annotations
 import json
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Callable
 
 import numpy as np
 import pandas as pd
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import ExtraTreesClassifier, RandomForestClassifier
 from sklearn.impute import SimpleImputer
 from sklearn.metrics import classification_report, confusion_matrix, f1_score
 from sklearn.model_selection import GroupKFold
 from sklearn.pipeline import Pipeline
 
 from .data import LABEL_COL, WELL_COL
+
+try:
+    from lightgbm import LGBMClassifier
+except ImportError:  # pragma: no cover
+    LGBMClassifier = None
+
+try:
+    from catboost import CatBoostClassifier
+except ImportError:  # pragma: no cover
+    CatBoostClassifier = None
 
 
 LABELS = [0, 1, 2, 3]
@@ -27,15 +38,55 @@ class FoldResult:
     weighted_f1_structured: float
 
 
-def build_pipeline(random_state: int = 42) -> Pipeline:
-    model = RandomForestClassifier(
-        n_estimators=400,
-        max_depth=10,
-        min_samples_leaf=2,
-        class_weight="balanced_subsample",
-        n_jobs=1,
-        random_state=random_state,
-    )
+def build_pipeline(model_name: str = "random_forest", random_state: int = 42) -> Pipeline:
+    if model_name == "random_forest":
+        model = RandomForestClassifier(
+            n_estimators=400,
+            max_depth=10,
+            min_samples_leaf=2,
+            class_weight="balanced_subsample",
+            n_jobs=1,
+            random_state=random_state,
+        )
+    elif model_name == "extra_trees":
+        model = ExtraTreesClassifier(
+            n_estimators=500,
+            max_depth=12,
+            min_samples_leaf=2,
+            class_weight="balanced",
+            n_jobs=1,
+            random_state=random_state,
+        )
+    elif model_name == "lightgbm":
+        if LGBMClassifier is None:
+            raise ImportError("lightgbm is not installed")
+        model = LGBMClassifier(
+            objective="multiclass",
+            num_class=4,
+            n_estimators=300,
+            learning_rate=0.05,
+            num_leaves=31,
+            subsample=0.9,
+            colsample_bytree=0.9,
+            class_weight="balanced",
+            random_state=random_state,
+            verbosity=-1,
+        )
+    elif model_name == "catboost":
+        if CatBoostClassifier is None:
+            raise ImportError("catboost is not installed")
+        model = CatBoostClassifier(
+            loss_function="MultiClass",
+            iterations=350,
+            depth=8,
+            learning_rate=0.05,
+            auto_class_weights="Balanced",
+            random_seed=random_state,
+            verbose=False,
+        )
+    else:
+        raise ValueError(f"Unsupported model_name: {model_name}")
+
     return Pipeline(
         steps=[
             ("imputer", SimpleImputer(strategy="median")),
@@ -84,6 +135,8 @@ def cross_validate(
     feature_cols: list[str],
     output_dir: Path | str,
     n_splits: int = 5,
+    model_name: str = "random_forest",
+    output_prefix: str = "",
 ) -> dict:
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -97,7 +150,7 @@ def cross_validate(
     fold_results: list[FoldResult] = []
 
     for fold, (train_idx, valid_idx) in enumerate(splitter.split(X, y, groups), start=1):
-        model = build_pipeline(random_state=42 + fold)
+        model = build_pipeline(model_name=model_name, random_state=42 + fold)
         model.fit(X.iloc[train_idx], y.iloc[train_idx])
 
         raw_pred = model.predict(X.iloc[valid_idx])
@@ -136,9 +189,11 @@ def cross_validate(
 
     oof = pd.concat(oof_records, ignore_index=True).sort_values("id").reset_index(drop=True)
     metrics = summarize_metrics(oof, fold_results)
+    metrics["model_name"] = model_name
 
-    oof.to_csv(output_dir / "oof_predictions.csv", index=False, encoding="utf-8-sig")
-    with (output_dir / "cv_metrics.json").open("w", encoding="utf-8") as f:
+    prefix = f"{output_prefix}_" if output_prefix else ""
+    oof.to_csv(output_dir / f"{prefix}oof_predictions.csv", index=False, encoding="utf-8-sig")
+    with (output_dir / f"{prefix}cv_metrics.json").open("w", encoding="utf-8") as f:
         json.dump(metrics, f, ensure_ascii=False, indent=2)
 
     return metrics

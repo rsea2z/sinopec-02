@@ -1,0 +1,7 @@
+﻿weights,raw_macro_f1,structured_macro_f1
+"{'random_forest': 0.6, 'extra_trees': 0.2, 'catboost': 0.2}",0.5863656539901856,0.6413544839573021
+"{'random_forest': 0.5, 'extra_trees': 0.3, 'catboost': 0.2}",0.5874867535316868,0.6413544839573021
+"{'random_forest': 0.4, 'extra_trees': 0.4, 'catboost': 0.2}",0.5942439812367541,0.6396427564292122
+"{'random_forest': 0.5, 'extra_trees': 0.5}",0.597484775984841,0.6312570174051916
+"{'random_forest': 0.7, 'extra_trees': 0.3}",0.6055922904334761,0.6272557536000062
+"{'random_forest': 0.6, 'extra_trees': 0.4}",0.6052710229673083,0.6233164937630747

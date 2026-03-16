@@ -1,0 +1,176 @@
+{
+  "fold_results": [
+    {
+      "fold": 1,
+      "macro_f1_raw": 0.5882694902937818,
+      "macro_f1_structured": 0.6239928011140922,
+      "weighted_f1_raw": 0.9793829171624251,
+      "weighted_f1_structured": 0.9806814693201993
+    },
+    {
+      "fold": 2,
+      "macro_f1_raw": 0.5813949652734826,
+      "macro_f1_structured": 0.6597189706428837,
+      "weighted_f1_raw": 0.9771773408146582,
+      "weighted_f1_structured": 0.9860999653264365
+    },
+    {
+      "fold": 3,
+      "macro_f1_raw": 0.5121548958633131,
+      "macro_f1_structured": 0.6021723878727135,
+      "weighted_f1_raw": 0.9722070474756938,
+      "weighted_f1_structured": 0.9843758724988366
+    },
+    {
+      "fold": 4,
+      "macro_f1_raw": 0.5741806430429185,
+      "macro_f1_structured": 0.5880513548308075,
+      "weighted_f1_raw": 0.9698956175719873,
+      "weighted_f1_structured": 0.9779695200633955
+    },
+    {
+      "fold": 5,
+      "macro_f1_raw": 0.5521609215312662,
+      "macro_f1_structured": 0.6582247817541935,
+      "weighted_f1_raw": 0.9647374450663445,
+      "weighted_f1_structured": 0.980609731080845
+    }
+  ],
+  "overall": {
+    "macro_f1_raw": 0.560788548681521,
+    "macro_f1_structured": 0.626710954687932,
+    "weighted_f1_raw": 0.9725327937733644,
+    "weighted_f1_structured": 0.9818973321572914,
+    "classification_report_raw": {
+      "0": {
+        "precision": 0.9952696310312205,
+        "recall": 0.9698406426972211,
+        "f1-score": 0.9823906083244397,
+        "support": 7593.0
+      },
+      "1": {
+        "precision": 0.4357142857142857,
+        "recall": 0.953125,
+        "f1-score": 0.5980392156862745,
+        "support": 64.0
+      },
+      "2": {
+        "precision": 0.35074626865671643,
+        "recall": 0.746031746031746,
+        "f1-score": 0.47715736040609136,
+        "support": 63.0
+      },
+      "3": {
+        "precision": 0.125,
+        "recall": 0.36,
+        "f1-score": 0.18556701030927836,
+        "support": 25.0
+      },
+      "accuracy": 0.9659134925758553,
+      "macro avg": {
+        "precision": 0.4766825463505556,
+        "recall": 0.7572493471822418,
+        "f1-score": 0.560788548681521,
+        "support": 7745.0
+      },
+      "weighted avg": {
+        "precision": 0.9825939364275202,
+        "recall": 0.9659134925758553,
+        "f1-score": 0.9725327937733644,
+        "support": 7745.0
+      }
+    },
+    "classification_report_structured": {
+      "0": {
+        "precision": 0.9923219486364839,
+        "recall": 0.9872250757276438,
+        "f1-score": 0.9897669505512643,
+        "support": 7593.0
+      },
+      "1": {
+        "precision": 0.75,
+        "recall": 0.75,
+        "f1-score": 0.75,
+        "support": 64.0
+      },
+      "2": {
+        "precision": 0.5873015873015873,
+        "recall": 0.5873015873015873,
+        "f1-score": 0.5873015873015873,
+        "support": 63.0
+      },
+      "3": {
+        "precision": 0.125,
+        "recall": 0.32,
+        "f1-score": 0.1797752808988764,
+        "support": 25.0
+      },
+      "accuracy": 0.9798579728857327,
+      "macro avg": {
+        "precision": 0.6136558839845179,
+        "recall": 0.6611316657573078,
+        "f1-score": 0.626710954687932,
+        "support": 7745.0
+      },
+      "weighted avg": {
+        "precision": 0.9842253784372915,
+        "recall": 0.9798579728857327,
+        "f1-score": 0.9818973321572914,
+        "support": 7745.0
+      }
+    },
+    "confusion_matrix_raw": [
+      [
+        7364,
+        79,
+        87,
+        63
+      ],
+      [
+        3,
+        61,
+        0,
+        0
+      ],
+      [
+        16,
+        0,
+        47,
+        0
+      ],
+      [
+        16,
+        0,
+        0,
+        9
+      ]
+    ],
+    "confusion_matrix_structured": [
+      [
+        7496,
+        16,
+        26,
+        55
+      ],
+      [
+        16,
+        48,
+        0,
+        0
+      ],
+      [
+        25,
+        0,
+        37,
+        1
+      ],
+      [
+        17,
+        0,
+        0,
+        8
+      ]
+    ]
+  },
+  "model_name": "catboost"
+}

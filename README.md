@@ -111,6 +111,7 @@ python scripts/train_baseline.py
 - 使用 `GroupKFold`，按井号分组
 - 报告 point-wise 指标
 - 增加每井结构化后处理，强制标签顺序满足 `1 -> 2 -> 3`
+- 新增多模型比较与概率融合搜索
 
 ## 当前结果
 
@@ -133,6 +134,19 @@ python scripts/train_baseline.py
 - 设计轨迹对齐与局部变化率特征有价值
 - 下一阶段值得尝试两阶段候选点检测或序列模型
 
+## 扩展结果
+
+在 `RandomForest / ExtraTrees / CatBoost` 的 OOF 概率上做简单加权融合后，得到更强结果：
+
+- Best ensemble weights: `RF 0.6 + ET 0.2 + CatBoost 0.2`
+- Structured macro-F1: `0.6414`
+
+对应脚本：
+
+- `python scripts/compare_models.py`
+- `python scripts/search_ensemble.py`
+- `python scripts/train_ensemble.py`
+
 ## 重要结论
 
 - 这个问题本质上是序列关键点识别，不是普通 IID 表格分类
@@ -146,4 +160,5 @@ python scripts/train_baseline.py
 - `docs/analysis/data_report.md`
 - `docs/analysis/model_plan.md`
 - `docs/analysis/baseline_results.md`
+- `docs/analysis/model_comparison.md`
 - `memory/session_memory.md`

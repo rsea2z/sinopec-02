@@ -1,0 +1,8 @@
+{
+  "weights": {
+    "random_forest": 0.6,
+    "extra_trees": 0.2,
+    "catboost": 0.2
+  },
+  "feature_count": 38
+}

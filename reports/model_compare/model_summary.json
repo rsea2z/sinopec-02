@@ -1,0 +1,30 @@
+[
+  {
+    "model_name": "random_forest",
+    "macro_f1_raw": 0.5931844733741356,
+    "macro_f1_structured": 0.6321662739600733,
+    "weighted_f1_raw": 0.9803123367274051,
+    "weighted_f1_structured": 0.9823087269763562
+  },
+  {
+    "model_name": "extra_trees",
+    "macro_f1_raw": 0.574811482616858,
+    "macro_f1_structured": 0.6294264581040105,
+    "weighted_f1_raw": 0.9777579262742214,
+    "weighted_f1_structured": 0.9819422877936697
+  },
+  {
+    "model_name": "catboost",
+    "macro_f1_raw": 0.560788548681521,
+    "macro_f1_structured": 0.626710954687932,
+    "weighted_f1_raw": 0.9725327937733644,
+    "weighted_f1_structured": 0.9818973321572914
+  },
+  {
+    "model_name": "lightgbm",
+    "macro_f1_raw": 0.5333099958634377,
+    "macro_f1_structured": 0.5697568641211875,
+    "weighted_f1_raw": 0.9816365062396891,
+    "weighted_f1_structured": 0.9803201399899745
+  }
+]
