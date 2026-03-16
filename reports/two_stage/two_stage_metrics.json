@@ -1,0 +1,12 @@
+{
+  "model_name": "two_stage_candidates",
+  "threshold_2": 0.1,
+  "threshold_3": 0.3500000000000001,
+  "macro_f1_two_stage": 0.6643006920967487,
+  "macro_f1_stage1_structured_reference": 0.6413544839573021,
+  "candidate_counts_per_well": {
+    "1": 2,
+    "2": 5,
+    "3": 10
+  }
+}
