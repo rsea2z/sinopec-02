@@ -129,13 +129,19 @@ def fit_label_full(train_cand_df: pd.DataFrame, pred_cand_df: pd.DataFrame, labe
     return pred_cand_df
 
 
-def decode_well(group_df: pd.DataFrame, threshold_2: float, threshold_3: float) -> pd.DataFrame:
+def decode_well(
+    group_df: pd.DataFrame,
+    threshold_2: float,
+    threshold_3: float,
+    max_rank_2: int,
+    max_rank_3: int,
+) -> pd.DataFrame:
     group_df = group_df.sort_values("XJS").copy()
     group_df["pred_two_stage"] = 0
 
     cand1 = group_df[group_df["is_candidate_1"] == 1]
-    cand2 = group_df[group_df["is_candidate_2"] == 1]
-    cand3 = group_df[group_df["is_candidate_3"] == 1]
+    cand2 = group_df[(group_df["is_candidate_2"] == 1) & (group_df["rank_prob_2"] <= max_rank_2)]
+    cand3 = group_df[(group_df["is_candidate_3"] == 1) & (group_df["rank_prob_3"] <= max_rank_3)]
     if cand1.empty:
         return group_df
 
@@ -186,13 +192,38 @@ def search_thresholds(oof_df: pd.DataFrame) -> tuple[float, float, float]:
         for t3 in np.arange(0.1, 0.91, 0.05):
             parts = []
             for _, group_df in oof_df.groupby(WELL_COL, sort=False):
-                parts.append(decode_well(group_df, float(t2), float(t3)))
+                parts.append(decode_well(group_df, float(t2), float(t3), 5, 10))
             pred_df = pd.concat(parts, ignore_index=True)
             score = f1_score(pred_df[LABEL_COL].astype(int), pred_df["pred_two_stage"].astype(int), average="macro")
             if score > best_score:
                 best_score = score
                 best_pair = (float(t2), float(t3))
     return best_pair[0], best_pair[1], best_score
+
+
+def search_decode_params(oof_df: pd.DataFrame) -> tuple[float, float, int, int, float]:
+    best_score = -1.0
+    best = (0.1, 0.35, 5, 10)
+    # Search a narrow neighborhood around the previously best-performing setup.
+    for t2 in [0.1, 0.15, 0.2]:
+        for t3 in [0.25, 0.3, 0.35, 0.4, 0.45]:
+            for max_rank_2 in [2, 3, 4, 5]:
+                for max_rank_3 in [2, 3, 4, 5, 6, 8, 10]:
+                    parts = []
+                    for _, group_df in oof_df.groupby(WELL_COL, sort=False):
+                        parts.append(
+                            decode_well(group_df, float(t2), float(t3), max_rank_2, max_rank_3)
+                        )
+                    pred_df = pd.concat(parts, ignore_index=True)
+                    score = f1_score(
+                        pred_df[LABEL_COL].astype(int),
+                        pred_df["pred_two_stage"].astype(int),
+                        average="macro",
+                    )
+                    if score > best_score:
+                        best_score = score
+                        best = (float(t2), float(t3), int(max_rank_2), int(max_rank_3))
+    return best[0], best[1], best[2], best[3], best_score
 
 
 def merge_candidate_scores(base_df: pd.DataFrame, cand_dfs: dict[int, pd.DataFrame]) -> pd.DataFrame:
@@ -228,17 +259,25 @@ def main() -> None:
     oof_full = merge_candidate_scores(train_df, oof_candidate_frames)
     val_full = merge_candidate_scores(val_df, val_candidate_frames)
 
-    t2, t3, best_macro = search_thresholds(oof_full)
+    t2, t3, max_rank_2, max_rank_3, best_macro = search_decode_params(oof_full)
 
-    oof_parts = [decode_well(group_df, t2, t3) for _, group_df in oof_full.groupby(WELL_COL, sort=False)]
+    oof_parts = [
+        decode_well(group_df, t2, t3, max_rank_2, max_rank_3)
+        for _, group_df in oof_full.groupby(WELL_COL, sort=False)
+    ]
     oof_pred = pd.concat(oof_parts, ignore_index=True).sort_values("id").reset_index(drop=True)
-    val_parts = [decode_well(group_df, t2, t3) for _, group_df in val_full.groupby(WELL_COL, sort=False)]
+    val_parts = [
+        decode_well(group_df, t2, t3, max_rank_2, max_rank_3)
+        for _, group_df in val_full.groupby(WELL_COL, sort=False)
+    ]
     val_pred = pd.concat(val_parts, ignore_index=True).sort_values("id").reset_index(drop=True)
 
     metrics = {
         "model_name": "two_stage_candidates",
         "threshold_2": t2,
         "threshold_3": t3,
+        "max_rank_2": max_rank_2,
+        "max_rank_3": max_rank_3,
         "macro_f1_two_stage": f1_score(
             oof_pred[LABEL_COL].astype(int), oof_pred["pred_two_stage"].astype(int), average="macro"
         ),
@@ -258,6 +297,8 @@ def main() -> None:
             "# Two-Stage Results\n\n"
             f"- threshold_2: `{t2:.2f}`\n"
             f"- threshold_3: `{t3:.2f}`\n"
+            f"- max_rank_2: `{max_rank_2}`\n"
+            f"- max_rank_3: `{max_rank_3}`\n"
             f"- two-stage macro-F1: `{metrics['macro_f1_two_stage']:.4f}`\n"
             f"- stage-1 structured reference: `{metrics['macro_f1_stage1_structured_reference']:.4f}`\n"
         )
@@ -267,4 +308,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

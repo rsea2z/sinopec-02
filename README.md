@@ -177,12 +177,12 @@ python scripts/train_baseline.py
 
 基于“两阶段候选点生成 + 候选点精排”的新方案，5 折按井交叉验证达到：
 
-- two-stage macro-F1: `0.6643`
+- two-stage macro-F1: `0.6656`
 
 相比上一版最优 ensemble：
 
 - stage-1 structured macro-F1: `0.6414`
-- two-stage structured macro-F1: `0.6643`
+- two-stage structured macro-F1: `0.6656`
 
 这说明项目已经从“可用 baseline”进入“有明确改进路线且已验证有效”的阶段。
 
