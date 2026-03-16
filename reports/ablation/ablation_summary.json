@@ -1,0 +1,38 @@
+[
+  {
+    "config": "no_position",
+    "feature_count": 35,
+    "macro_f1_raw": 0.5772793076602664,
+    "macro_f1_structured": 0.6475659477085195
+  },
+  {
+    "config": "no_design",
+    "feature_count": 29,
+    "macro_f1_raw": 0.5932902015738089,
+    "macro_f1_structured": 0.6369092090762642
+  },
+  {
+    "config": "all_features",
+    "feature_count": 38,
+    "macro_f1_raw": 0.5931844733741356,
+    "macro_f1_structured": 0.6321662739600733
+  },
+  {
+    "config": "no_rolling",
+    "feature_count": 26,
+    "macro_f1_raw": 0.5199845081446802,
+    "macro_f1_structured": 0.5418874953424523
+  },
+  {
+    "config": "no_dynamic",
+    "feature_count": 25,
+    "macro_f1_raw": 0.4796590829094564,
+    "macro_f1_structured": 0.4827892789930336
+  },
+  {
+    "config": "raw_minimal",
+    "feature_count": 12,
+    "macro_f1_raw": 0.34144601302785693,
+    "macro_f1_structured": 0.4015919119965533
+  }
+]

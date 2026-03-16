@@ -1,0 +1,176 @@
+{
+  "fold_results": [
+    {
+      "fold": 1,
+      "macro_f1_raw": 0.48467849758251325,
+      "macro_f1_structured": 0.4678682606845022,
+      "weighted_f1_raw": 0.9755631006096238,
+      "weighted_f1_structured": 0.972372606859853
+    },
+    {
+      "fold": 2,
+      "macro_f1_raw": 0.522422044783044,
+      "macro_f1_structured": 0.5280010259917921,
+      "weighted_f1_raw": 0.9748940985701079,
+      "weighted_f1_structured": 0.9768728356197247
+    },
+    {
+      "fold": 3,
+      "macro_f1_raw": 0.5192229244766655,
+      "macro_f1_structured": 0.6014031571034828,
+      "weighted_f1_raw": 0.9812811458117963,
+      "weighted_f1_structured": 0.9844013827029182
+    },
+    {
+      "fold": 4,
+      "macro_f1_raw": 0.4877113211485137,
+      "macro_f1_structured": 0.5035499988683672,
+      "weighted_f1_raw": 0.9741394222326906,
+      "weighted_f1_structured": 0.9737031418047074
+    },
+    {
+      "fold": 5,
+      "macro_f1_raw": 0.5578067172521423,
+      "macro_f1_structured": 0.6124434389140272,
+      "weighted_f1_raw": 0.9729938791414786,
+      "weighted_f1_structured": 0.9782874732535005
+    }
+  ],
+  "overall": {
+    "macro_f1_raw": 0.5199845081446802,
+    "macro_f1_structured": 0.5418874953424523,
+    "weighted_f1_raw": 0.9759548554960559,
+    "weighted_f1_structured": 0.9771724820599964,
+    "classification_report_raw": {
+      "0": {
+        "precision": 0.9892871313318344,
+        "recall": 0.9851178717239563,
+        "f1-score": 0.9871980995116801,
+        "support": 7593.0
+      },
+      "1": {
+        "precision": 0.4838709677419355,
+        "recall": 0.703125,
+        "f1-score": 0.5732484076433121,
+        "support": 64.0
+      },
+      "2": {
+        "precision": 0.3684210526315789,
+        "recall": 0.3333333333333333,
+        "f1-score": 0.35,
+        "support": 63.0
+      },
+      "3": {
+        "precision": 0.14705882352941177,
+        "recall": 0.2,
+        "f1-score": 0.1694915254237288,
+        "support": 25.0
+      },
+      "accuracy": 0.9749515816655907,
+      "macro avg": {
+        "precision": 0.4971594938086901,
+        "recall": 0.5553940512643225,
+        "f1-score": 0.5199845081446802,
+        "support": 7745.0
+      },
+      "weighted avg": {
+        "precision": 0.9773417594631539,
+        "recall": 0.9749515816655907,
+        "f1-score": 0.9759548554960559,
+        "support": 7745.0
+      }
+    },
+    "classification_report_structured": {
+      "0": {
+        "precision": 0.989805375347544,
+        "recall": 0.9845910707230344,
+        "f1-score": 0.9871913376469035,
+        "support": 7593.0
+      },
+      "1": {
+        "precision": 0.65625,
+        "recall": 0.65625,
+        "f1-score": 0.65625,
+        "support": 64.0
+      },
+      "2": {
+        "precision": 0.453125,
+        "recall": 0.4603174603174603,
+        "f1-score": 0.4566929133858268,
+        "support": 63.0
+      },
+      "3": {
+        "precision": 0.046875,
+        "recall": 0.12,
+        "f1-score": 0.06741573033707865,
+        "support": 25.0
+      },
+      "accuracy": 0.9748224661071659,
+      "macro avg": {
+        "precision": 0.5365138438368859,
+        "recall": 0.5552896327601238,
+        "f1-score": 0.5418874953424523,
+        "support": 7745.0
+      },
+      "weighted avg": {
+        "precision": 0.9796398921903036,
+        "recall": 0.9748224661071659,
+        "f1-score": 0.9771724820599964,
+        "support": 7745.0
+      }
+    },
+    "confusion_matrix_raw": [
+      [
+        7480,
+        48,
+        36,
+        29
+      ],
+      [
+        19,
+        45,
+        0,
+        0
+      ],
+      [
+        42,
+        0,
+        21,
+        0
+      ],
+      [
+        20,
+        0,
+        0,
+        5
+      ]
+    ],
+    "confusion_matrix_structured": [
+      [
+        7476,
+        22,
+        35,
+        60
+      ],
+      [
+        22,
+        42,
+        0,
+        0
+      ],
+      [
+        33,
+        0,
+        29,
+        1
+      ],
+      [
+        22,
+        0,
+        0,
+        3
+      ]
+    ]
+  },
+  "model_name": "random_forest"
+}

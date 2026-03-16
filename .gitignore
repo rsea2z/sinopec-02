@@ -7,3 +7,9 @@ __pycache__/
 .venv/
 outputs/
 catboost_info/
+memory/
+docs/thesis/
+thesis_work/
+AGENTS.md
+.claude*/
+.codex*/
